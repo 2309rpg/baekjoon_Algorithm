@@ -39,7 +39,7 @@ public class Main {
 		manCount = Integer.parseInt(firstLineInput[0]);
 		relationCount = Integer.parseInt(firstLineInput[1]);
 		
-        // 인접리스트 생성 초기화
+		// 인접리스트 생성 초기화
 		adjacencyList = new ArrayList[manCount];
 		for (int i = 0; i < manCount; i++) {
 			adjacencyList[i] = new ArrayList<Integer>();
