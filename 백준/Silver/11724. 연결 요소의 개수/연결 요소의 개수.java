@@ -13,7 +13,7 @@ public class Main {
 		String firstLineInput[] = br.readLine().split(" ");
 		int nodeCount = Integer.parseInt(firstLineInput[0]);
 		int edgeCount = Integer.parseInt(firstLineInput[1]);
-        // 어떤 구조더라도 최소 한개는 있음
+		// 어떤 구조더라도 최소 한개는 있음
 		int connectedcomponentCount = 1;
 		
 		// 스택으로 구현 (1부터 시작 초기값)
@@ -22,7 +22,7 @@ public class Main {
 		int checkVisit[] = new int[nodeCount];
 		checkVisit[0] = 1;
         
-        // 인접리스트 생성 초기화
+		// 인접리스트 생성 초기화
 		ArrayList<Integer>[] adjacencyList = new ArrayList[nodeCount];
 		for (int i = 0; i < nodeCount; i++) {
 			adjacencyList[i] = new ArrayList<Integer>();
@@ -42,16 +42,16 @@ public class Main {
                 .boxed()				// checkVisit 배열에 탐색하지 않은 노드 초기값 0이 있는경우 계속 반복
                 .collect(Collectors.toSet())
                 .contains(0)) {
-            // 스택 최상단 값 꺼내기
+			// 스택 최상단 값 꺼내기
 			int peekNode = stack.pop();
-            // 해당 값 인접노드 처리
+			// 해당 값 인접노드 처리
 			for (int i = 0; i < adjacencyList[peekNode - 1].size(); i++) {    // 인접노드 개수만큼 체크
 				if (checkVisit[adjacencyList[peekNode - 1].get(i) - 1] != 1) {    // 탐색여부 확인
 					stack.add(adjacencyList[peekNode - 1].get(i));
 					checkVisit[adjacencyList[peekNode - 1].get(i) - 1] = 1;
 				}
 			}
-            // 한 포인트부터 인접노드 탐색을 마친 경우
+			// 한 포인트부터 인접노드 탐색을 마친 경우
 			if (stack.size() == 0) {
 				// 한 시작점부터 순회할 수 있는 전부를 돌았으므로 횟수 +1
 				connectedcomponentCount += 1;
@@ -60,7 +60,7 @@ public class Main {
 		                .boxed()
 		                .collect(Collectors.toSet())
 		                .contains(0)) {
-                    // 탐색여부 배열에서 시작 값 지정
+					// 탐색여부 배열에서 시작 값 지정
 					for (int i = 0; i < checkVisit.length; i++) {
 						if (checkVisit[i] == 0) {
 							stack.add(i + 1);
@@ -71,7 +71,7 @@ public class Main {
 				}
 			}
 		}
-        // 출력
+		// 출력
 		System.out.println(connectedcomponentCount);
 	}
 
