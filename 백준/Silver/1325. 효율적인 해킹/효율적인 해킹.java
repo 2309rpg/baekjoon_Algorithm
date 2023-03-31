@@ -34,14 +34,14 @@ public class Main {
 		adjacencyCount = Integer.parseInt(st.nextToken());
 		
 		// 방문 리스트 초기화 (바로 초기화 하는게 아니면 null 들어감)
-		visitArray = new int[comCount + 1];	// 인덱스 번호와 도시 번호를 맞추기 위해 + 1
+		visitArray = new int[comCount + 1];
 		Arrays.fill(visitArray, 0);
 //		for (int i = 0; i < visitArray.length; i++) {
 //			visitArray[i] = 0;
 //		}
 		
 		// 최대깊이 리스트 초기화 (바로 초기화 하는게 아니면 null 들어감)
-		maxDepthArray = new int[comCount + 1];	// 인덱스 번호와 도시 번호를 맞추기 위해 + 1
+		maxDepthArray = new int[comCount + 1];
 		Arrays.fill(maxDepthArray, 0);
 //		for (int i = 0; i < maxDepthArray.length; i++) {
 //			maxDepthArray[i] = 0;
