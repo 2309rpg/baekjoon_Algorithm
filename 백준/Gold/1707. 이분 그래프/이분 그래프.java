@@ -51,9 +51,9 @@ public class Main {
 			
 			// 이분 리스트 초기화
 			bipartiteArray = new int[nodeCount + 1];
-//			for (int i = 0; i < bipartiteArray.length; i++) {
-//				bipartiteArray[i] = 0;
-//			}
+			for (int i = 0; i < bipartiteArray.length; i++) {
+				bipartiteArray[i] = 0;
+			}
 			
 			// 인접노드 초기화 및 입력
 			adjacencyList = new ArrayList<>();
@@ -76,13 +76,6 @@ public class Main {
 					dfs(i);
 				}
 				
-//				for (int j = 0; j < visitArray.length; j++) {
-//					visitArray[j] = 0;
-//				}
-//				for (int k = 0; k < bipartiteArray.length; k++) {
-//					bipartiteArray[k] = 0;
-//				}
-				
 			}
 			
 			// 에러가 발견됐다면
@@ -99,33 +92,26 @@ public class Main {
 	}
 	
 	public static void dfs(int nowNode) {
+		// 현재 노드 방문 처리
 		visitArray[nowNode] = 1;
-		//bipartiteArray[nowNode] = nowEvenOdd;
 
 		for (int i = 0; i < adjacencyList.get(nowNode).size(); i++) {
+			// 인접노드
 			int adjacencyNode = adjacencyList.get(nowNode).get(i);
-
-			if (visitArray[adjacencyNode] != 1) {	// 방문 여부 체크
+			
+			// 방문 여부 체크
+			if (visitArray[adjacencyNode] != 1) {	
 				
-				// 홀짝 처리
-				int nextEvenOdd = 0;
-				if (bipartiteArray[nowNode] == 1) {
-					nextEvenOdd = 2;
-				}else if (bipartiteArray[nowNode] == 2) {
-					nextEvenOdd = 1;
-				}
-				//bipartiteArray[nowNode] = nowEvenOdd;
-				
-				//bipartiteArray[adjacencyNode] = nextEvenOdd;
+				// 이분 처리
 				bipartiteArray[adjacencyNode] = (bipartiteArray[nowNode] + 1) % 2;
+				// 재귀반복처리
+				dfs(adjacencyNode);
 				
-				dfs(adjacencyList.get(nowNode).get(i));
+			// 이미 방문했다면 현재 노드와 인접노드가 이분 관계인지
 			}else if (bipartiteArray[nowNode] == bipartiteArray[adjacencyNode]) {
 				errorCheck = true;
 			}
 		}
-		//visitArray[nowNode] = 0;
-		//bipartiteArray[nowNode] = 0;
 		
 	}
 
