@@ -26,8 +26,8 @@ public class Main {
 	static int edgeCount;			// 에지 개수
 	static int[] visitArray;		// 방문 리스트
 	static int[] bipartiteArray;	// 이분 리스트
-	static ArrayList<ArrayList<Integer>> adjacencyList;	// 인접도시 리스트
-	static boolean errorCheck = false;
+	static ArrayList<ArrayList<Integer>> adjacencyList;	// 인접노드 리스트
+	static boolean errorCheck = false;	// 에러체크
 
 	public static void main(String[] args) throws Exception {
 		
